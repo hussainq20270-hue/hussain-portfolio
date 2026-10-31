@@ -48,7 +48,7 @@ export default function Contact() {
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <span className="min-w-0 flex-1 text-left">
-                  <span className="block text-xs uppercase tracking-wider text-slate-500">
+                  <span className="block text-xs uppercase tracking-wider text-slate-400">
                     {label}
                     <span className="hidden sm:inline"> · {hint}</span>
                   </span>
@@ -56,7 +56,7 @@ export default function Contact() {
                     {value}
                   </span>
                 </span>
-                <ArrowUpRight className="hidden h-5 w-5 shrink-0 sm:block text-slate-500 transition group-hover:text-amber-400" />
+                <ArrowUpRight className="hidden h-5 w-5 shrink-0 sm:block text-slate-400 transition group-hover:text-amber-400" />
               </m.a>
             ))}
           </div>

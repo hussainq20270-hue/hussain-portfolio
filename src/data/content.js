@@ -51,25 +51,61 @@ export const hero = {
   secondaryCta: 'See my work',
   // Small highlight numbers under the hero. Edit or remove.
   stats: [
-    { value: '5+', label: 'Projects delivered' },
+    { value: '7+', label: 'Projects delivered' },
     { value: '100%', label: 'Responsive builds' },
     { value: '24h', label: 'Reply time' },
   ],
 }
 
 // ── Projects ──────────────────────────────────────────────────
-// image: put a screenshot in /public/projects/ and set e.g.
-//        image: '/projects/luxury-store.webp'
-//        Leave as null to show the styled placeholder.
-// liveUrl: leave as '' to show "Link coming soon".
+// image:    put a screenshot in /public/projects/ and set e.g.
+//           image: '/projects/luxury-store.webp'. Leave null for the placeholder.
+// liveUrl:  website link. Leave '' to show "Live link coming soon".
+// videoUrl: demo video (e.g. a Facebook reel). Leave '' to hide "Watch demo".
+// features: 2-3 short bullet points. Leave [] to hide.
 export const projects = [
+  {
+    title: 'Umrah & Travel Services',
+    category: 'Travel · Booking system',
+    description:
+      'A complete website for Umrah and travel agencies: customers pick packages online and the agency runs everything from one admin panel.',
+    features: ['Online package booking', 'Admin panel to manage bookings', 'Professional invoices in one click'],
+    tech: ['React', 'Tailwind CSS', 'Admin Panel'],
+    liveUrl: '',
+    videoUrl: 'https://www.facebook.com/reel/1073621265622772/',
+    image: null,
+  },
+  {
+    title: 'Hotel Booking & Invoice System',
+    category: 'Software',
+    description:
+      'A smart system for travel businesses that handles hotel bookings and payments and creates invoices automatically, so there is no more manual paperwork.',
+    features: ['Hotel booking records', 'Payment tracking', 'Automatic invoice generation'],
+    tech: ['JavaScript', 'Database', 'PDF Invoices'],
+    liveUrl: '',
+    videoUrl: 'https://www.facebook.com/reel/1551642539344113/',
+    image: null,
+  },
+  {
+    title: 'Premium AC Services Website',
+    category: 'Services',
+    description:
+      'A premium, modern website for an AC installation and repair business, designed to look trustworthy and turn visitors into service calls.',
+    features: ['Premium, modern design', 'Service showcase', 'WhatsApp inquiry buttons'],
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    liveUrl: '',
+    videoUrl: 'https://www.facebook.com/reel/1604544121008514/',
+    image: null,
+  },
   {
     title: 'Luxury Store',
     category: 'E-commerce',
     description:
       'An elegant online store with a premium look, smooth product browsing and a simple checkout flow.',
+    features: [],
     tech: ['React', 'Tailwind CSS', 'JavaScript'],
     liveUrl: '',
+    videoUrl: '',
     image: null,
   },
   {
@@ -77,8 +113,10 @@ export const projects = [
     category: 'Booking',
     description:
       'A clean booking inquiry form that lets customers request a ride in seconds and sends details straight to the owner.',
+    features: [],
     tech: ['HTML', 'CSS', 'JavaScript'],
     liveUrl: 'https://physicaltodigital.dev',
+    videoUrl: '',
     image: null,
   },
   {
@@ -86,17 +124,10 @@ export const projects = [
     category: 'Software',
     description:
       'Management software for mobile shops: track stock, sales, repairs and customer balances in one place.',
+    features: [],
     tech: ['JavaScript', 'Node.js', 'Database'],
     liveUrl: '',
-    image: null,
-  },
-  {
-    title: 'Umrah & Travel Services',
-    category: 'Travel',
-    description:
-      'A trustworthy website for an Umrah and travel agency, showcasing packages and turning visitors into inquiries.',
-    tech: ['React', 'Tailwind CSS'],
-    liveUrl: '',
+    videoUrl: '',
     image: null,
   },
   {
@@ -104,8 +135,10 @@ export const projects = [
     category: 'Services · RTL',
     description:
       'A right-to-left Arabic website for a home services company, built for easy booking on mobile.',
+    features: [],
     tech: ['HTML', 'CSS', 'JavaScript', 'RTL'],
     liveUrl: '',
+    videoUrl: '',
     image: null,
   },
 ]

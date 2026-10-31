@@ -13,21 +13,23 @@ export default function Hero() {
 
       // Full entrance animation
       mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // Short, overlapping timeline so the text is readable quickly (good for LCP).
+        // The intro paragraph only slides (no fade) so the browser counts it as painted immediately.
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-        tl.from('[data-hero="badge"]', { y: 20, opacity: 0, duration: 0.6 })
-          .from('[data-hero="char"]', { yPercent: 110, opacity: 0, stagger: 0.035, duration: 0.8 }, '-=0.3')
-          .from('[data-hero="tagline"]', { y: 24, opacity: 0, duration: 0.7 }, '-=0.5')
-          .from('[data-hero="intro"]', { y: 24, opacity: 0, duration: 0.7 }, '-=0.5')
+        tl.from('[data-hero="badge"]', { y: 16, opacity: 0, duration: 0.5 })
+          .from('[data-hero="char"]', { yPercent: 110, opacity: 0, stagger: 0.025, duration: 0.6 }, 0.1)
+          .from('[data-hero="tagline"]', { y: 20, opacity: 0, duration: 0.6 }, 0.3)
+          .from('[data-hero="intro"]', { y: 20, duration: 0.6 }, 0.35)
           .fromTo(
             '[data-hero="cta"] > *',
             { y: 20, opacity: 0 },
             // explicit end values: the buttons have CSS transitions that would confuse a plain .from()
-            { y: 0, opacity: 1, stagger: 0.12, duration: 0.6, clearProps: 'transform,opacity' },
-            '-=0.4',
+            { y: 0, opacity: 1, stagger: 0.1, duration: 0.5, clearProps: 'transform,opacity' },
+            0.45,
           )
-          .from('[data-hero="stat"]', { y: 20, opacity: 0, stagger: 0.1, duration: 0.5 }, '-=0.3')
-          .from('[data-hero="visual"]', { x: 60, opacity: 0, rotate: 4, duration: 1 }, 0.4)
-          .from('[data-hero="line"]', { scaleX: 0, transformOrigin: 'left', stagger: 0.07, duration: 0.5 }, 0.9)
+          .from('[data-hero="stat"]', { y: 16, opacity: 0, stagger: 0.08, duration: 0.5 }, 0.6)
+          .from('[data-hero="visual"]', { x: 60, opacity: 0, rotate: 4, duration: 0.9 }, 0.3)
+          .from('[data-hero="line"]', { scaleX: 0, transformOrigin: 'left', stagger: 0.06, duration: 0.45 }, 0.7)
 
         gsap.to('[data-hero="blob"]', {
           y: 30,
@@ -123,7 +125,7 @@ export default function Hero() {
             ))}
           </dl>
 
-          <p className="mt-8 flex items-center gap-2 text-sm text-slate-500">
+          <p className="mt-8 flex items-center gap-2 text-sm text-slate-400">
             <MapPin className="h-4 w-4 text-amber-400" /> {contact.location}
           </p>
         </div>
@@ -136,7 +138,7 @@ export default function Hero() {
               <span className="h-3 w-3 rounded-full bg-red-400/80" />
               <span className="h-3 w-3 rounded-full bg-amber-400/80" />
               <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
-              <span className="ml-3 text-xs text-slate-500">your-business.com</span>
+              <span className="ml-3 text-xs text-slate-400">your-business.com</span>
             </div>
             <div className="space-y-3 p-6 font-mono text-sm">
               {[

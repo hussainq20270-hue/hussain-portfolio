@@ -5,6 +5,7 @@ import WhatsAppIcon from './WhatsAppIcon'
 // Always-visible WhatsApp button, bottom-right on every screen size.
 export default function FloatingWhatsApp() {
   return (
+    <aside aria-label="Quick contact">
     <m.a
       href={whatsappLink}
       target="_blank"
@@ -23,5 +24,6 @@ export default function FloatingWhatsApp() {
         Chat on WhatsApp
       </span>
     </m.a>
+    </aside>
   )
 }

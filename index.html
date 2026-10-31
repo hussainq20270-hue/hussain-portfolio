@@ -35,6 +35,23 @@
     />
     <meta name="twitter:image" content="https://hussain-portfolio.vercel.app/og-image.png" />
 
+    <!-- Structured data for Google (update url after deploying) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Hussain Qamar | Web Designer & Software Developer",
+        "founder": { "@type": "Person", "name": "Hussain Qamar", "jobTitle": "Web Designer & Software Developer" },
+        "url": "https://hussain-portfolio.vercel.app/",
+        "image": "https://hussain-portfolio.vercel.app/og-image.png",
+        "email": "hussainq20270@gmail.com",
+        "telephone": "+923706074588",
+        "areaServed": ["Pakistan", "Saudi Arabia", "Worldwide"],
+        "address": { "@type": "PostalAddress", "addressCountry": "PK" },
+        "priceRange": "PKR 25,000+"
+      }
+    </script>
+
     <!-- Favicon (placeholder: replace public/favicon.svg with your logo) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -42,10 +59,24 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Loaded without blocking the first paint -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

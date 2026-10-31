@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import { ArrowUpRight, ImageIcon } from 'lucide-react'
+import { ArrowUpRight, Check, ImageIcon, PlayCircle } from 'lucide-react'
 import { projects } from '../data/content'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
@@ -61,7 +61,18 @@ export default function Projects() {
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-xs font-semibold uppercase tracking-widest text-amber-400">{p.category}</p>
                   <h3 className="mt-2 font-display text-xl font-semibold text-white">{p.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">{p.description}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-400">{p.description}</p>
+                  {p.features?.length > 0 && (
+                    <ul className="mt-4 space-y-1.5">
+                      {p.features.map((f) => (
+                        <li key={f} className="flex gap-2 text-sm text-slate-300">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="flex-1" />
                   <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tech used">
                     {p.tech.map((t) => (
                       <li key={t} className="rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">
@@ -69,19 +80,31 @@ export default function Projects() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6">
-                    {p.liveUrl ? (
+                  <div className="mt-4 flex flex-wrap items-center gap-x-5">
+                    {p.liveUrl && (
                       <a
                         href={p.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-semibold text-amber-400 transition hover:gap-2.5 hover:text-amber-300"
+                        className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-amber-400 transition hover:gap-2.5 hover:text-amber-300"
                       >
                         View live <ArrowUpRight className="h-4 w-4" />
                         <span className="sr-only">: {p.title}</span>
                       </a>
-                    ) : (
-                      <span className="text-sm text-slate-500">Live link coming soon</span>
+                    )}
+                    {p.videoUrl && (
+                      <a
+                        href={p.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-slate-200 transition hover:text-amber-300"
+                      >
+                        <PlayCircle className="h-4 w-4" /> Watch demo
+                        <span className="sr-only">: {p.title}</span>
+                      </a>
+                    )}
+                    {!p.liveUrl && !p.videoUrl && (
+                      <span className="text-sm text-slate-400">Live link coming soon</span>
                     )}
                   </div>
                 </div>
