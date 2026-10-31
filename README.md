@@ -1,0 +1,82 @@
+# Hussain Qamar — Portfolio
+
+A fast, animated, responsive one-page portfolio built with **React + Vite**, **Tailwind CSS**, **GSAP (ScrollTrigger)**, **Framer Motion** and **Lucide** icons.
+
+## Run it locally
+
+You need [Node.js](https://nodejs.org) 20 or newer.
+
+```bash
+npm install      # first time only
+npm run dev      # start the dev server → http://localhost:5173
+npm run build    # production build into /dist
+npm run preview  # preview the production build
+```
+
+## Editing content (no layout code needed)
+
+**Everything you see on the site lives in [`src/data/content.js`](src/data/content.js).** Open it, change the text, and save. The dev server updates instantly.
+
+| What you want to change | Where in `content.js` |
+| --- | --- |
+| WhatsApp number, email, location, pre-filled WhatsApp message | `contact` |
+| Name, tagline, intro text, hero stats | `hero` / `site` |
+| Projects (title, description, tech, live link, screenshot) | `projects` |
+| Services and prices | `services` |
+| Skills grid | `skills` |
+| About bio and highlights | `about` |
+| Contact section heading and text | `contactSection` |
+
+### Adding project screenshots
+1. Save the screenshot in `public/projects/`. `.webp` is best (smallest); aim for about 1200×750px.
+2. In `content.js`, set that project's `image`, e.g. `image: '/projects/luxury-store.webp'`.
+3. Leave `image: null` to show the styled placeholder.
+
+Images load lazily (`loading="lazy"`), so they don't slow down the first paint.
+
+### Live links
+Set `liveUrl: 'https://…'` to show a **View live** link, or leave `liveUrl: ''` to show "Live link coming soon".
+
+### Your photo (About section)
+In `src/components/About.jsx`, replace the placeholder block with
+`<img src="/me.webp" alt="Hussain Qamar" loading="lazy" className="h-full w-full object-cover" />`
+and put `me.webp` in `public/`.
+
+### Skill icons
+Skills are matched to icons by keyword in `src/components/Skills.jsx` (`iconMap`). Unknown skills get a ✨ icon automatically.
+
+### SEO, favicon and social preview
+- Page title, description and Open Graph tags: `index.html`. **After deploying, replace `https://hussain-portfolio.vercel.app/` with your real URL** (3 places).
+- Favicon: replace `public/favicon.svg` (currently an "HQ" placeholder).
+- Social share image: `public/og-image.png` (1200×630).
+
+### Colours and fonts
+Navy and amber colour tokens are defined at the top of `src/index.css` under `@theme`.
+
+## Accessibility and motion
+- Animations are switched off or reduced when the visitor's OS has **Reduce motion** turned on (GSAP `matchMedia`, Framer `MotionConfig reducedMotion="user"`, plus a CSS fallback).
+- Includes a skip link, keyboard focus styles and screen-reader labels on icon buttons.
+
+## Deploy to Vercel (free Hobby plan)
+
+1. Push this folder to a GitHub repository (see the commands below).
+2. Go to <https://vercel.com/new>, sign in with GitHub, and **Import** the repository.
+3. Vercel detects **Vite** automatically (build command `npm run build`, output folder `dist`). Click **Deploy**.
+4. Every later `git push` to `main` redeploys the site automatically.
+
+```bash
+git add .
+git commit -m "Update content"
+git push
+```
+
+## Project structure
+
+```
+src/
+  data/content.js        ← all editable content
+  components/            ← Navbar, Hero, Projects, Services, Skills, About, Contact, Footer, FloatingWhatsApp
+  index.css              ← Tailwind + theme colours
+public/
+  favicon.svg, og-image.png, projects/
+```
