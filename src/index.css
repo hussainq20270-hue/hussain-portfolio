@@ -50,10 +50,27 @@
   }
 }
 
+/* Slow floating background glow in the hero (CSS so it runs off the main thread) */
+@keyframes hero-float {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(20px, 30px, 0);
+  }
+}
+.hero-blob {
+  animation: hero-float 6s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 /* Honour the OS "reduce motion" setting */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero-blob {
+    animation: none;
   }
   *,
   *::before,

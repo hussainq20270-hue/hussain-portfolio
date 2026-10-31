@@ -31,15 +31,6 @@ export default function Hero() {
           .from('[data-hero="visual"]', { x: 60, opacity: 0, rotate: 4, duration: 0.9 }, 0.3)
           .from('[data-hero="line"]', { scaleX: 0, transformOrigin: 'left', stagger: 0.06, duration: 0.45 }, 0.7)
 
-        gsap.to('[data-hero="blob"]', {
-          y: 30,
-          x: 20,
-          duration: 6,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          stagger: 1.5,
-        })
       })
 
       // Reduced motion: a single quick fade, nothing moves
@@ -62,8 +53,8 @@ export default function Hero() {
       {/* Background decoration */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-        <div data-hero="blob" className="absolute -left-32 top-10 h-96 w-96 rounded-full bg-navy-600/40 blur-3xl" />
-        <div data-hero="blob" className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-amber-500/15 blur-3xl" />
+        <div className="hero-blob absolute -left-32 top-10 h-96 w-96 rounded-full bg-navy-600/40 blur-3xl" />
+        <div className="hero-blob absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-amber-500/15 blur-3xl [animation-delay:-3s]" />
       </div>
 
       <div data-hero="content" className="container-x grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">

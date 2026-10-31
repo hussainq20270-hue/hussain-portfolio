@@ -49,7 +49,7 @@ function Invoice() {
         <div className="flex-1 rounded-md bg-white p-2 text-navy-950">
           <div className="flex justify-between">
             <span className="text-[9px] font-bold">INVOICE #1042</span>
-            <span className="rounded bg-emerald-500 px-1 text-[7px] font-bold text-white">PAID</span>
+            <span className="rounded bg-emerald-700 px-1 text-[7px] font-bold text-white">PAID</span>
           </div>
           {['Hotel: Makkah, 5 nights', 'Hotel: Madinah, 4 nights', 'Transport'].map((r) => (
             <div key={r} className="mt-1.5 flex justify-between border-b border-slate-200 pb-1 text-[7px]">
