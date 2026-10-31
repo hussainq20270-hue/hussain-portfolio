@@ -34,8 +34,11 @@ npm run preview  # preview the production build
 
 Images load lazily (`loading="lazy"`), so they don't slow down the first paint.
 
-### Live links
-Set `liveUrl: 'https://…'` to show a **View live** link, or leave `liveUrl: ''` to show "Live link coming soon".
+### Live links, demo videos and features
+- `liveUrl: 'https://…'` shows a **View live** link.
+- `videoUrl: 'https://www.facebook.com/reel/…'` shows a **Watch demo** link (any video URL works).
+- If both are empty, the card shows "Live link coming soon".
+- `features: ['…', '…']` shows 2–3 tick-mark bullet points; `[]` hides them.
 
 ### Your photo (About section)
 In `src/components/About.jsx`, replace the placeholder block with
@@ -46,9 +49,10 @@ and put `me.webp` in `public/`.
 Skills are matched to icons by keyword in `src/components/Skills.jsx` (`iconMap`). Unknown skills get a ✨ icon automatically.
 
 ### SEO, favicon and social preview
-- Page title, description and Open Graph tags: `index.html`. **After deploying, replace `https://hussain-portfolio.vercel.app/` with your real URL** (3 places).
+- Page title, description and Open Graph tags: `index.html`. **After deploying, replace `https://hussain-portfolio.vercel.app/` with your real URL** (all places in `index.html`).
 - Favicon: replace `public/favicon.svg` (currently an "HQ" placeholder).
 - Social share image: `public/og-image.png` (1200×630).
+- `public/robots.txt`, `public/sitemap.xml` and the JSON-LD block in `index.html` also contain the site URL. Update them too.
 
 ### Colours and fonts
 Navy and amber colour tokens are defined at the top of `src/index.css` under `@theme`.
