@@ -49,10 +49,11 @@ and put `me.webp` in `public/`.
 Skills are matched to icons by keyword in `src/components/Skills.jsx` (`iconMap`). Unknown skills get a ✨ icon automatically.
 
 ### SEO, favicon and social preview
-- Page title, description and Open Graph tags: `index.html`. **After deploying, replace `https://hussain-portfolio.vercel.app/` with your real URL** (all places in `index.html`).
+- Live site: **https://hussain-portfolio-hazel.vercel.app/**
+- Page title, description and Open Graph tags: `index.html`. If you add a custom domain, replace `https://hussain-portfolio-hazel.vercel.app/` with it everywhere in `index.html`.
 - Favicon: replace `public/favicon.svg` (currently an "HQ" placeholder).
 - Social share image: `public/og-image.png` (1200×630).
-- `public/robots.txt`, `public/sitemap.xml` and the JSON-LD block in `index.html` also contain the site URL. Update them too.
+- `public/robots.txt`, `public/sitemap.xml` and the JSON-LD block in `index.html` also contain the site URL. Update them too if the domain changes.
 
 ### Colours and fonts
 Navy and amber colour tokens are defined at the top of `src/index.css` under `@theme`.

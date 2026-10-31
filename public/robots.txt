@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Replace with your real domain after deploying
-Sitemap: https://hussain-portfolio.vercel.app/sitemap.xml
+# Live site URL (update if you add a custom domain)
+Sitemap: https://hussain-portfolio-hazel.vercel.app/sitemap.xml
