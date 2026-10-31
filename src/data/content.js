@@ -162,14 +162,21 @@ export const skills = [
 ]
 
 // ── About ─────────────────────────────────────────────────────
-// Placeholder bio: replace with your own words.
 export const about = {
-  heading: 'A developer who cares about how it looks and how it works',
+  heading: 'I turn local businesses into brands people find, trust and buy from',
   paragraphs: [
-    "I'm Hussain Qamar, a web designer and software developer. I help small businesses, shops, restaurants and travel agencies get online with websites that look great and load fast.",
-    'Beyond websites, I build custom software, like shop management and booking tools, that saves my clients time every single day. Clear communication, honest pricing and on-time delivery are how I work.',
+    "I'm Hussain Qamar, a web designer and software developer from Pakistan. I build modern, mobile-first websites for shops, online stores, travel and Umrah agencies, taxi services and home-service companies, including Arabic (right-to-left) sites for clients in the Gulf.",
+    'Every site I make has one job: bring you more customers. That means fast loading, a clean design that builds trust, and a clear WhatsApp or booking button on every page so visitors become inquiries.',
+    "I also build custom software that makes day-to-day work easier. Mobi Ledger, for example, helps mobile shop owners manage stock, sales, repairs and customer balances in one place. You get honest fixed pricing, regular updates while I work, and support after launch.",
   ],
-  highlights: ['Clean, modern design', 'Fast & mobile-first', 'Honest, fixed pricing', 'Support after launch'],
+  highlights: [
+    'Mobile-first, fast-loading websites',
+    'English & Arabic (RTL) sites',
+    'WhatsApp & booking integration',
+    'Custom business software',
+    'Honest, fixed pricing',
+    'Support after launch',
+  ],
 }
 
 // ── Contact section ───────────────────────────────────────────
