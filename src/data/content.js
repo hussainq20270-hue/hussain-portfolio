@@ -63,6 +63,8 @@ export const hero = {
 // liveUrl:  website link. Leave '' to show "Live link coming soon".
 // videoUrl: demo video (e.g. a Facebook reel). Leave '' to hide "Watch demo".
 // features: 2-3 short bullet points. Leave [] to hide.
+// mockup:   illustrated preview shown when image is null:
+//           'travel' | 'invoice' | 'ac' | 'store' | 'taxi' | 'ledger' | 'arabic'
 export const projects = [
   {
     title: 'Umrah & Travel Services',
@@ -73,6 +75,7 @@ export const projects = [
     tech: ['React', 'Tailwind CSS', 'Admin Panel'],
     liveUrl: '',
     videoUrl: 'https://www.facebook.com/reel/1073621265622772/',
+    mockup: 'travel',
     image: null,
   },
   {
@@ -84,6 +87,7 @@ export const projects = [
     tech: ['JavaScript', 'Database', 'PDF Invoices'],
     liveUrl: '',
     videoUrl: 'https://www.facebook.com/reel/1551642539344113/',
+    mockup: 'invoice',
     image: null,
   },
   {
@@ -95,6 +99,7 @@ export const projects = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     liveUrl: '',
     videoUrl: 'https://www.facebook.com/reel/1604544121008514/',
+    mockup: 'ac',
     image: null,
   },
   {
@@ -106,6 +111,7 @@ export const projects = [
     tech: ['React', 'Tailwind CSS', 'JavaScript'],
     liveUrl: '',
     videoUrl: '',
+    mockup: 'store',
     image: null,
   },
   {
@@ -117,6 +123,7 @@ export const projects = [
     tech: ['HTML', 'CSS', 'JavaScript'],
     liveUrl: 'https://physicaltodigital.dev',
     videoUrl: '',
+    mockup: 'taxi',
     image: null,
   },
   {
@@ -128,6 +135,7 @@ export const projects = [
     tech: ['JavaScript', 'Node.js', 'Database'],
     liveUrl: '',
     videoUrl: '',
+    mockup: 'ledger',
     image: null,
   },
   {
@@ -139,6 +147,7 @@ export const projects = [
     tech: ['HTML', 'CSS', 'JavaScript', 'RTL'],
     liveUrl: '',
     videoUrl: '',
+    mockup: 'arabic',
     image: null,
   },
 ]

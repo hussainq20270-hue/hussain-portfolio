@@ -1,6 +1,7 @@
 import { m } from 'framer-motion'
 import { ArrowUpRight, Check, ImageIcon, PlayCircle } from 'lucide-react'
 import { projects } from '../data/content'
+import ProjectMockup from './ProjectMockup'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
@@ -18,7 +19,9 @@ function Screenshot({ project, index }) {
       />
     )
   }
-  // Styled placeholder until a real screenshot is added
+  // Illustrated UI preview when no real screenshot exists
+  if (project.mockup) return <ProjectMockup type={project.mockup} />
+  // Plain placeholder as a last resort
   const hues = ['from-amber-500/30', 'from-sky-500/25', 'from-emerald-500/25', 'from-amber-400/25', 'from-indigo-500/25']
   return (
     <div
