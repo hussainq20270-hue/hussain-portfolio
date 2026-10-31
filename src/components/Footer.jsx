@@ -1,4 +1,5 @@
-import { site } from '../data/content'
+import { contact, site } from '../data/content'
+import FacebookIcon from './FacebookIcon'
 
 export default function Footer() {
   return (
@@ -7,6 +8,16 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
+        {contact.facebook && (
+          <a
+            href={contact.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center gap-2 transition hover:text-amber-300"
+          >
+            <FacebookIcon className="h-4 w-4" /> Facebook
+          </a>
+        )}
         <a href="#top" className="inline-flex min-h-11 items-center transition hover:text-amber-300">
           Back to top ↑
         </a>

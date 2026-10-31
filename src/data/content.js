@@ -15,6 +15,8 @@ export const contact = {
   whatsappDisplay: '0370 6074588',
   whatsappMessage: "Hi Hussain, I found your portfolio and I'd like to discuss a project.",
   email: 'hussainq20270@gmail.com',
+  facebook: 'https://www.facebook.com/profile.php?id=61593445231493', // leave '' to hide
+  facebookLabel: 'Web Development services',
   location: 'Pakistan · Available worldwide (remote)', // placeholder, edit me
 }
 
