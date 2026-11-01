@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, m } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { navLinks, site, whatsappLink } from '../data/content'
@@ -7,6 +7,25 @@ import WhatsAppIcon from './WhatsAppIcon'
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  // Section to scroll to once the mobile menu has finished closing.
+  // (Scrolling while the menu animates shut cancels smooth scrolling on phones.)
+  const pendingTarget = useRef(null)
+
+  const goTo = (e, href) => {
+    e.preventDefault()
+    pendingTarget.current = href
+    setOpen(false)
+  }
+
+  const scrollToPending = () => {
+    const href = pendingTarget.current
+    pendingTarget.current = null
+    const el = href && document.querySelector(href)
+    if (!el) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+    history.replaceState(null, '', href)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -59,7 +78,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={scrollToPending}>
         {open && (
           <m.ul
             initial={{ height: 0, opacity: 0 }}
@@ -71,7 +90,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => goTo(e, l.href)}
                   className="block border-t border-white/5 py-3 font-medium text-slate-200"
                 >
                   {l.label}
