@@ -7,17 +7,35 @@ export default function About() {
     <section id="about" className="section overflow-x-clip">
       <div className="container-x grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal className="mx-auto w-full max-w-[18rem] sm:max-w-sm">
-          {/* Photo placeholder: swap for <img src="/me.webp" loading="lazy" ... /> */}
-          <div className="relative">
-            <div aria-hidden="true" className="absolute -inset-3 rotate-3 rounded-3xl border-2 border-amber-400/40" />
-            <div className="card relative grid aspect-[4/5] place-items-center overflow-hidden bg-gradient-to-br from-navy-700 to-navy-900">
+          {about.photo ? (
+            <div className="relative mx-auto aspect-square w-full">
+              {/* Amber + navy rings */}
+              <div aria-hidden="true" className="absolute -inset-3 rounded-full border-2 border-dashed border-amber-400/40" />
+              <div className="relative h-full w-full rounded-full bg-gradient-to-br from-amber-400 via-amber-500/40 to-navy-600 p-1">
+              <img
+                src={about.photo}
+                srcSet={`${about.photoSmall} 400w, ${about.photo} 640w`}
+                sizes="(min-width: 640px) 384px, 288px"
+                alt={`Portrait of ${site.name}`}
+                width="640"
+                height="640"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full rounded-full border-4 border-navy-950 object-cover shadow-2xl shadow-amber-500/10"
+              />
+              </div>
+              <span className="absolute bottom-3 right-2 rounded-full border border-amber-400/40 bg-navy-900/90 px-3 py-1.5 text-xs font-semibold text-amber-300 shadow-lg backdrop-blur sm:bottom-6 sm:right-4">
+                {site.title.split(' & ')[0]}
+              </span>
+            </div>
+          ) : (
+            <div className="card relative grid aspect-[4/5] place-items-center bg-gradient-to-br from-navy-700 to-navy-900">
               <div className="flex flex-col items-center gap-3 text-slate-400">
                 <User className="h-16 w-16" aria-hidden="true" />
                 <span className="font-display text-lg font-semibold text-white">{site.name}</span>
-                <span className="text-xs">Photo placeholder</span>
               </div>
             </div>
-          </div>
+          )}
         </Reveal>
 
         <div>

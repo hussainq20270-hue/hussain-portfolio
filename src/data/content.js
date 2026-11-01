@@ -207,6 +207,9 @@ export const skills = [
 
 // ── About ─────────────────────────────────────────────────────
 export const about = {
+  // Photo in /public. Set to null to show a placeholder.
+  photo: '/hussain-qamar-640.webp',
+  photoSmall: '/hussain-qamar-400.webp',
   heading: 'I turn local businesses into brands people find, trust and buy from',
   paragraphs: [
     "I'm Hussain Qamar, a web designer and software developer from Pakistan. I build modern, mobile-first websites for shops, online stores, travel and Umrah agencies, taxi services and home-service companies, including Arabic (right-to-left) sites for clients in the Gulf.",
