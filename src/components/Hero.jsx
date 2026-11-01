@@ -4,6 +4,9 @@ import { ArrowDown, Code2, MapPin, Rocket } from 'lucide-react'
 import { contact, hero, whatsappLink } from '../data/content'
 import WhatsAppIcon from './WhatsAppIcon'
 
+// 1x1 transparent GIF used as the <img> fallback so hidden pictures cost nothing
+const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+
 export default function Hero() {
   const root = useRef(null)
 
@@ -72,14 +75,18 @@ export default function Hero() {
 
           <p className="flex items-center gap-3 font-display text-lg text-slate-400">
             {hero.photo && (
-              <img
-                src={hero.photoSmall}
-                alt=""
-                width="56"
-                height="56"
-                decoding="async"
-                className="h-14 w-14 rounded-full border-2 border-amber-400 object-cover shadow-lg shadow-amber-500/20 lg:hidden"
-              />
+              // <picture> + media query: phones download the small avatar, desktops download nothing
+              <picture className="lg:hidden">
+                <source media="(max-width: 1023px)" srcSet={hero.photoSmall} />
+                <img
+                  src={BLANK}
+                  alt=""
+                  width="56"
+                  height="56"
+                  decoding="async"
+                  className="h-14 w-14 rounded-full border-2 border-amber-400 object-cover shadow-lg shadow-amber-500/20"
+                />
+              </picture>
             )}
             {hero.greeting}
           </p>
@@ -140,10 +147,15 @@ export default function Hero() {
             <div className="relative mx-auto aspect-square w-full max-w-[26rem]">
               <div aria-hidden="true" className="hero-spin absolute -inset-4 rounded-full border-2 border-dashed border-amber-400/35" />
               <div className="relative h-full w-full rounded-full bg-gradient-to-br from-amber-400 via-amber-500/40 to-navy-600 p-1">
+                {/* Only desktops (where this block is visible) download the large photo */}
+                <picture>
+                  <source
+                    media="(min-width: 1024px)"
+                    srcSet={`${hero.photoMedium} 480w, ${hero.photo} 640w`}
+                    sizes="416px"
+                  />
                 <img
-                  src={hero.photo}
-                  srcSet={`${hero.photoMedium} 400w, ${hero.photo} 640w`}
-                  sizes="416px"
+                  src={BLANK}
                   alt={`${hero.name}, ${hero.tagline}`}
                   width="640"
                   height="640"
@@ -151,6 +163,7 @@ export default function Hero() {
                   decoding="async"
                   className="h-full w-full rounded-full border-4 border-navy-950 object-cover"
                 />
+                </picture>
               </div>
               {hero.photoBadges?.[0] && (
                 <div data-hero="chip" className="hero-blob absolute -left-12 bottom-24 flex items-center gap-2 rounded-2xl border border-white/10 bg-navy-900/90 px-4 py-3 shadow-xl backdrop-blur">
