@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { Fragment, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ArrowDown, Code2, MapPin, Rocket } from 'lucide-react'
 import { contact, hero, whatsappLink } from '../data/content'
@@ -94,7 +94,10 @@ export default function Hero() {
             <span className="sr-only">{hero.name}</span>
             <span aria-hidden="true">
               {words.map((word, wi) => (
-                <span key={wi} className="mr-[0.25em] inline-block overflow-hidden whitespace-nowrap pb-1 last:mr-0">
+                <Fragment key={wi}>
+                {/* a real space between words so copied/indexed text reads "Hussain Qamar" */}
+                {wi > 0 && ' '}
+                <span className="inline-block overflow-hidden whitespace-nowrap pb-1">
                   {word.split('').map((ch, ci) => (
                     <span
                       key={ci}
@@ -105,6 +108,7 @@ export default function Hero() {
                     </span>
                   ))}
                 </span>
+                </Fragment>
               ))}
             </span>
           </h1>
@@ -127,10 +131,10 @@ export default function Hero() {
 
           <dl className="mt-10 grid max-w-md grid-cols-3 gap-4">
             {hero.stats.map((s) => (
-              <div key={s.label} data-hero="stat">
-                <dt className="sr-only">{s.label}</dt>
+              <div key={s.label} data-hero="stat" className="flex flex-col-reverse">
+                {/* label first in the markup (read once by screen readers), shown under the value */}
+                <dt className="text-xs text-slate-400 sm:text-sm">{s.label}</dt>
                 <dd className="font-display text-2xl font-bold text-white sm:text-3xl">{s.value}</dd>
-                <dd className="text-xs text-slate-400 sm:text-sm">{s.label}</dd>
               </div>
             ))}
           </dl>

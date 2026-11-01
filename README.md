@@ -40,10 +40,13 @@ Images load lazily (`loading="lazy"`), so they don't slow down the first paint.
 - If both are empty, the card shows "Live link coming soon".
 - `features: ['…', '…']` shows 2–3 tick-mark bullet points; `[]` hides them.
 
-### Your photo (About section)
-In `src/components/About.jsx`, replace the placeholder block with
-`<img src="/me.webp" alt="Hussain Qamar" loading="lazy" className="h-full w-full object-cover" />`
-and put `me.webp` in `public/`.
+### Your photo (Hero + About)
+The photo files live in `public/`:
+- `hussain-qamar-640.webp` / `hussain-qamar-480.webp`: large photo (desktop hero)
+- `hussain-qamar-400.webp`: About section
+- `hussain-qamar-160.webp`: small face avatar next to "Hi, I'm" on phones
+
+To change the photo, replace these files with square `.webp` images of the same names (or change the paths in `content.js` under `hero.photo*` and `about.photo*`). Set `photo: null` to hide it. The floating badges next to the hero photo are `hero.photoBadges`.
 
 ### Skill icons
 Skills are matched to icons by keyword in `src/components/Skills.jsx` (`iconMap`). Unknown skills get a ✨ icon automatically.
@@ -52,7 +55,7 @@ Skills are matched to icons by keyword in `src/components/Skills.jsx` (`iconMap`
 - Live site: **https://hussain-portfolio-hazel.vercel.app/**
 - Page title, description and Open Graph tags: `index.html`. If you add a custom domain, replace `https://hussain-portfolio-hazel.vercel.app/` with it everywhere in `index.html`.
 - Favicon: replace `public/favicon.svg` (currently an "HQ" placeholder).
-- Social share image: `public/og-image.png` (1200×630).
+- Social share image: `public/og-image.jpg` (1200×630).
 - `public/robots.txt`, `public/sitemap.xml` and the JSON-LD block in `index.html` also contain the site URL. Update them too if the domain changes.
 
 ### Colours and fonts
@@ -83,5 +86,5 @@ src/
   components/            ← Navbar, Hero, Projects, Services, Skills, About, Contact, Footer, FloatingWhatsApp
   index.css              ← Tailwind + theme colours
 public/
-  favicon.svg, og-image.png, projects/
+  favicon.svg, og-image.jpg, projects/
 ```
