@@ -49,6 +49,11 @@ export const hero = {
   tagline: 'Web Designer & Software Developer',
   intro:
     'I design and build fast, modern websites and custom software that help businesses look professional online and run smoother offline.',
+  // Hero photo (in /public). Set photo to null to show no photo.
+  photo: '/hussain-qamar-640.webp',
+  photoMedium: '/hussain-qamar-400.webp',
+  photoSmall: '/hussain-qamar-160.webp',
+  photoBadges: ['Umrah & booking systems', 'Websites & Software'],
   primaryCta: 'Chat on WhatsApp',
   secondaryCta: 'See my work',
   // Small highlight numbers under the hero. Edit or remove.

@@ -64,12 +64,23 @@
   will-change: transform;
 }
 
+/* Slowly rotating dashed ring around the hero photo */
+@keyframes hero-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hero-spin {
+  animation: hero-spin 40s linear infinite;
+}
+
 /* Honour the OS "reduce motion" setting */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .hero-blob {
+  .hero-blob,
+  .hero-spin {
     animation: none;
   }
   *,

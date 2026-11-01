@@ -57,6 +57,18 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
+    <!-- Hero photo: start downloading early on desktop (it is the largest image above the fold) -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/hussain-qamar-640.webp"
+      imagesrcset="/hussain-qamar-400.webp 400w, /hussain-qamar-640.webp 640w"
+      imagesizes="416px"
+      media="(min-width: 1024px)"
+      fetchpriority="high"
+    />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

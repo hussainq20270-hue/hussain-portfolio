@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ArrowDown, MapPin } from 'lucide-react'
+import { ArrowDown, Code2, MapPin, Rocket } from 'lucide-react'
 import { contact, hero, whatsappLink } from '../data/content'
 import WhatsAppIcon from './WhatsAppIcon'
 
@@ -28,8 +28,8 @@ export default function Hero() {
             0.45,
           )
           .from('[data-hero="stat"]', { y: 16, opacity: 0, stagger: 0.08, duration: 0.5 }, 0.6)
-          .from('[data-hero="visual"]', { x: 60, opacity: 0, rotate: 4, duration: 0.9 }, 0.3)
-          .from('[data-hero="line"]', { scaleX: 0, transformOrigin: 'left', stagger: 0.06, duration: 0.45 }, 0.7)
+          .from('[data-hero="visual"]', { x: 40, scale: 0.92, duration: 0.9 }, 0.2) // no fade: the photo is the LCP image
+          .from('[data-hero="chip"]', { y: 16, opacity: 0, stagger: 0.12, duration: 0.5 }, 0.7)
 
       })
 
@@ -70,7 +70,19 @@ export default function Hero() {
             Available for new projects
           </p>
 
-          <p className="font-display text-lg text-slate-400">{hero.greeting}</p>
+          <p className="flex items-center gap-3 font-display text-lg text-slate-400">
+            {hero.photo && (
+              <img
+                src={hero.photoSmall}
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+                className="h-14 w-14 rounded-full border-2 border-amber-400 object-cover shadow-lg shadow-amber-500/20 lg:hidden"
+              />
+            )}
+            {hero.greeting}
+          </p>
           <h1 className="font-display text-5xl font-bold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
             <span className="sr-only">{hero.name}</span>
             <span aria-hidden="true">
@@ -121,40 +133,44 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Decorative code window (desktop only) */}
-        <div data-hero="visual" aria-hidden="true" className="relative hidden lg:block">
-          <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-amber-500/20 to-navy-600/20 blur-2xl" />
-          <div className="card relative overflow-hidden shadow-2xl">
-            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-              <span className="h-3 w-3 rounded-full bg-red-400/80" />
-              <span className="h-3 w-3 rounded-full bg-amber-400/80" />
-              <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
-              <span className="ml-3 text-xs text-slate-400">your-business.com</span>
-            </div>
-            <div className="space-y-3 p-6 font-mono text-sm">
-              {[
-                ['w-3/4', 'bg-amber-400/70'],
-                ['w-1/2', 'bg-slate-500/50'],
-                ['w-5/6', 'bg-navy-600'],
-                ['w-2/3', 'bg-slate-500/50'],
-                ['w-1/3', 'bg-amber-400/40'],
-                ['w-4/5', 'bg-navy-600'],
-              ].map(([w, c], i) => (
-                <div key={i} data-hero="line" className={`h-3 rounded-full ${w} ${c}`} />
-              ))}
-              <div className="grid grid-cols-3 gap-3 pt-4">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className="h-20 rounded-xl border border-white/10 bg-navy-800" />
-                ))}
+        {/* Photo (desktop). On phones a small avatar sits next to the greeting instead. */}
+        {hero.photo && (
+          <div data-hero="visual" className="relative hidden lg:block">
+            <div aria-hidden="true" className="absolute inset-6 rounded-full bg-gradient-to-br from-amber-500/30 to-navy-600/40 blur-3xl" />
+            <div className="relative mx-auto aspect-square w-full max-w-[26rem]">
+              <div aria-hidden="true" className="hero-spin absolute -inset-4 rounded-full border-2 border-dashed border-amber-400/35" />
+              <div className="relative h-full w-full rounded-full bg-gradient-to-br from-amber-400 via-amber-500/40 to-navy-600 p-1">
+                <img
+                  src={hero.photo}
+                  srcSet={`${hero.photoMedium} 400w, ${hero.photo} 640w`}
+                  sizes="416px"
+                  alt={`${hero.name}, ${hero.tagline}`}
+                  width="640"
+                  height="640"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-full w-full rounded-full border-4 border-navy-950 object-cover"
+                />
               </div>
-              <div className="flex justify-end pt-2">
-                <span className="rounded-full bg-amber-500 px-4 py-1.5 text-xs font-semibold text-navy-950">
-                  Book now →
-                </span>
-              </div>
+              {hero.photoBadges?.[0] && (
+                <div data-hero="chip" className="hero-blob absolute -left-12 bottom-24 flex items-center gap-2 rounded-2xl border border-white/10 bg-navy-900/90 px-4 py-3 shadow-xl backdrop-blur">
+                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-amber-500 text-navy-950">
+                    <Rocket className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="text-sm font-semibold text-white">{hero.photoBadges[0]}</span>
+                </div>
+              )}
+              {hero.photoBadges?.[1] && (
+                <div data-hero="chip" className="hero-blob absolute -right-2 -bottom-4 flex items-center gap-2 rounded-2xl border border-white/10 bg-navy-900/90 px-4 py-3 shadow-xl backdrop-blur [animation-delay:-3s]">
+                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-navy-700 text-amber-400">
+                    <Code2 className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="text-sm font-semibold text-white">{hero.photoBadges[1]}</span>
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   )
