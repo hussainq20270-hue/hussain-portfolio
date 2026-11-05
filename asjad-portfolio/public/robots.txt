@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Live site URL (update if you add a custom domain)
+Sitemap: https://asjad-rehman.vercel.app/sitemap.xml

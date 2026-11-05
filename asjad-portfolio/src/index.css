@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-navy-950: #050d1a;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #102240;
+  --color-navy-700: #18305a;
+  --color-navy-600: #234379;
+  --color-amber-300: #fcd581;
+  --color-amber-400: #f9bf4a;
+  --color-amber-500: #f5a524;
+  --color-amber-600: #d98a0b;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-navy-950 font-sans text-slate-300 antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    @apply bg-amber-500 text-navy-950;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-amber-400;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 px-6 py-3 font-semibold text-navy-950 shadow-lg shadow-amber-500/20 transition hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-amber-500/40;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:border-amber-400/60 hover:text-amber-300;
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-navy-900/70 backdrop-blur;
+  }
+}
+
+/* Slow floating background glow in the hero (CSS so it runs off the main thread) */
+@keyframes hero-float {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(20px, 30px, 0);
+  }
+}
+.hero-blob {
+  animation: hero-float 6s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Slowly rotating dashed ring around the hero photo */
+@keyframes hero-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hero-spin {
+  animation: hero-spin 40s linear infinite;
+}
+
+/* Honour the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-blob,
+  .hero-spin {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
